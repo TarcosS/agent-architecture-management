@@ -1,0 +1,20 @@
+architect:
+  authority: highest
+  gate_control: true
+  conflict_resolution: true
+
+pm:
+  reasoning: medium
+  gate_control: gate_a
+
+swe:
+  reasoning: high
+  gate_control: gate_b
+
+qa:
+  reasoning: high
+  gate_control: gate_c
+
+devops:
+  reasoning: medium
+  gate_control: gate_d

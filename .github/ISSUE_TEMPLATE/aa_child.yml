@@ -1,0 +1,27 @@
+name: Agent Architect - Child
+description: Created/assigned by architect only.
+title: "[SWE] "
+labels: ["aa:child", "aa:delegated-by-architect"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Required header:**
+        - Parent: #
+        - Owner-Agent:
+        - Gate:
+        - Dependencies:
+  - type: textarea
+    id: brief
+    attributes:
+      label: Brief
+      description: What to do + scope boundaries.
+    validations:
+      required: true
+  - type: textarea
+    id: ac
+    attributes:
+      label: Acceptance Criteria
+      description: Testable criteria.
+    validations:
+      required: true

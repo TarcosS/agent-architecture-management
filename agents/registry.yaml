@@ -1,0 +1,63 @@
+agents:
+  - id: architect
+    name: Agent Architect
+    responsibilities:
+      - Orchestrate workflow
+      - Resolve conflicts
+      - Produce final plan
+    outputs:
+      - docs/agile/workflow.md
+      - docs/agile/backlog.md
+
+  - id: pm
+    name: Product Manager
+    responsibilities:
+      - PRD, user stories, acceptance criteria
+    outputs:
+      - docs/product/prd.md
+      - docs/agile/backlog.md
+
+  - id: process
+    name: Process Engineer
+    responsibilities:
+      - SDLC process, dependencies, risk register
+    outputs:
+      - docs/agile/workflow.md
+      - docs/agile/risks.md
+
+  - id: designer
+    name: UX/UI Designer
+    responsibilities:
+      - IA, flows, wireframe checklist
+    outputs:
+      - docs/design/ux-notes.md
+
+  - id: swe
+    name: Software Engineer
+    responsibilities:
+      - Technical approach, task breakdown (implementation-ready)
+    outputs:
+      - docs/architecture/tech-plan.md
+      - docs/agile/backlog.md
+
+  - id: qa
+    name: QA Engineer
+    responsibilities:
+      - Test strategy + test cases per story
+    outputs:
+      - docs/quality/test-strategy.md
+      - docs/quality/test-cases.md
+
+  - id: devops
+    name: DevOps Engineer
+    responsibilities:
+      - CI/CD, envs, release checklist
+    outputs:
+      - docs/devops/release-checklist.md
+
+  - id: security
+    name: Security
+    responsibilities:
+      - Threat model lite, security checks
+    outputs:
+      - docs/security/threat-model.md

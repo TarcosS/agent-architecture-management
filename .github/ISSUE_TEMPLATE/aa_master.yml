@@ -1,0 +1,26 @@
+name: Agent Architect - Master
+description: Single prompt -> Architect orchestrates.
+title: "[AA] "
+labels: ["aa:master"]
+body:
+  - type: textarea
+    id: task
+    attributes:
+      label: Task
+      description: One sentence.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: Bullet points.
+  - type: textarea
+    id: ac
+    attributes:
+      label: Acceptance Criteria
+      description: Bullet points.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
