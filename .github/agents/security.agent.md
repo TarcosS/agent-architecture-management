@@ -1,3 +1,8 @@
+---
+name: security
+description: Security agent: provide a pragmatic, lightweight threat model and security checklist for features.
+---
+```chatagent
 # Agent: security (Security)
 
 ## Mission
@@ -24,3 +29,4 @@ Provide a lightweight threat model and security checks appropriate for the featu
 ## Definition of Done
 - threat-model.md updated
 - Mitigations map to tasks or acceptance criteria where needed
+```

@@ -1,3 +1,8 @@
+---
+name: swe
+description: Software Engineer: produce implementation-ready technical approaches and task breakdowns aligned with backlog IDs.
+---
+```chatagent
 # Agent: swe (Software Engineer)
 
 ## Mission
@@ -28,3 +33,4 @@ Produce a clear technical approach and implementation-ready task breakdown align
 ## Definition of Done
 - tech-plan.md is coherent and maps to backlog
 - Tasks have clear DoD checklists and dependencies
+```

@@ -1,3 +1,8 @@
+---
+name: architect
+description: Orchestrates the SDLC agent workflow; responsible for initial delegation, planning, and creating/assigning official child issues for master requests.
+---
+```chatagent
 # Agent: architect (Agent Architect)
 
 ## Mission
@@ -73,3 +78,4 @@ Every delegated issue you create must start with:
 - docs/agile/backlog.md contains EP/US/TK with owners + dependencies
 - docs/agile/risks.md updated
 - Official child issues created + assigned + labeled
+```
