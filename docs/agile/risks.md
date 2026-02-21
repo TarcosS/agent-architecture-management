@@ -134,7 +134,7 @@ Start all of these concurrently:
 
 2. **A3 Violation (No OIDC Provider Available)**  
    *Impact*: TK-010 (auth integration) cannot proceed. Requires provisioning a new identity provider (2-4 weeks for vendor selection + setup).  
-   *Mitigation*: Validate A3 before Gate B (confirm OIDC provider is accessible and supports required flows). **If validation fails**, this is an escalation event: architect must re-plan with PM to either delay MVP launch until provider is available OR approve scope reduction (removing auth-dependent features). Basic authentication is NOT part of the current TK breakdown and would require re-scoping.
+   *Mitigation*: Validate A3 before Gate B (confirm OIDC provider is accessible and supports required flows). **If validation fails**, immediate escalation to architect within 1 business day. Architect convenes architect + PM + devops decision meeting within 2 business days to choose: (a) delay MVP launch 2-4 weeks for provider procurement, OR (b) approve scope reduction (remove auth-dependent features from MVP). Basic authentication is NOT part of the current TK breakdown and would require full re-scoping (add ~1 week for new TK items).
 
 3. **A4 Violation (Zero-Downtime Not Required)**  
    *Impact*: Simplifies TK-011 (migrations) significantly. Allows blue-green cutover with brief downtime window.  

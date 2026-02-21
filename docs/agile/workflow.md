@@ -38,8 +38,8 @@
 
 **Blockers:**
 - Missing AC for any user story
-- Critical open questions unanswered (e.g., Q4: broker choice)
-- Scale estimates missing (Q5)
+- Critical open questions unanswered (e.g., Q4: broker choice, Q5: scale estimates)
+- Risk assumptions A3 or A4 invalidated
 
 ### Gate B — Tech Ready
 **Owner:** swe (+architect)
