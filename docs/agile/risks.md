@@ -53,7 +53,7 @@
 
 - **Q3: Are there existing tenant records in any database, or is this a fresh multi-tenant setup?**  
   *Owner: pm*  
-  *Context: If existing tenants exist, TK-001 (RBAC schema) must include backfill scripts to assign default roles/permissions.*
+  *Context: If tenants already exist in the database, TK-001 (RBAC schema) must include backfill scripts to assign default roles/permissions.*
 
 - **Q4: Which event broker technology has been approved (Kafka, RabbitMQ, NATS, cloud-native)?**  
   *Owner: architect + devops*  
@@ -199,7 +199,7 @@ TK-001 → TK-011 → TK-012 (Migration path: 3 tasks deep)
 - [ ] PRD complete (docs/product/prd.md exists)
 - [ ] User stories written with testable AC (US-001…US-00X in backlog.md)
 - [ ] Assumptions A1–A6 validated (process)
-- [ ] Open questions Q1, Q3, Q4, Q5 answered or delegated (Q2 already answered: greenfield)
+- [ ] Open questions Q1, Q3, Q4, Q5 answered or delegated (Q2 already answered in Section 3: greenfield confirmed)
 - [ ] Designer UX notes + flows complete (docs/design/ux-notes.md)
 - [ ] Risk register R-001…R-008 reviewed by architect
 
