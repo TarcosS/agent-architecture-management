@@ -1,6 +1,6 @@
 ---
 name: process
-description: Process Engineer: ensure predictable execution via dependency mapping, risk register maintenance, and SDLC gate readiness.
+description: "Process Engineer: ensure predictable execution via dependency mapping, risk register maintenance, and SDLC gate readiness."
 ---
 ```chatagent
 # Agent: process (Process Engineer)

@@ -1,6 +1,6 @@
 ---
 name: swe
-description: Software Engineer: produce implementation-ready technical approaches and task breakdowns aligned with backlog IDs.
+description: "Software Engineer: produce implementation-ready technical approaches and task breakdowns aligned with backlog IDs."
 ---
 ```chatagent
 # Agent: swe (Software Engineer)

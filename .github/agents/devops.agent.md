@@ -1,6 +1,6 @@
 ---
 name: devops
-description: DevOps: produce release checklists, environment notes, and deployment guidance for Gate D readiness.
+description: "DevOps: produce release checklists, environment notes, and deployment guidance for Gate D readiness."
 ---
 
 

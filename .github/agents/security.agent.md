@@ -1,6 +1,6 @@
 ---
 name: security
-description: Security agent: provide a pragmatic, lightweight threat model and security checklist for features.
+description: "Security agent: provide a pragmatic, lightweight threat model and security checklist for features."
 ---
 ```chatagent
 # Agent: security (Security)

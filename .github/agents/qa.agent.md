@@ -1,6 +1,6 @@
 ---
 name: qa
-description: QA Engineer: convert acceptance criteria into a test strategy and mapped test cases tied to US IDs.
+description: "QA Engineer: convert acceptance criteria into a test strategy and mapped test cases tied to US IDs."
 ---
 ```chatagent
 # Agent: qa (QA Engineer)
