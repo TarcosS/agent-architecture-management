@@ -30,7 +30,7 @@ Payload:
 - `agent_assignment.base_branch`
 - `agent_assignment.custom_instructions`
 - `agent_assignment.custom_agent`
-- `agent_assignment.model`
+- `agent_assignment.model` (only when `Model:` is present in issue body)
 
 Headers:
 
@@ -47,9 +47,7 @@ Headers:
    - Contents: Read
    - Pull requests: Read and write (recommended)
 
-Optional env in workflow:
-
-- `DEFAULT_COPILOT_MODEL` (defaults to `Claude Sonnet 4.5`)
+If `Model:` is omitted in the issue, the workflow omits `agent_assignment.model` from the API request.
 
 ## Custom Agents Source
 Custom agents are read from:

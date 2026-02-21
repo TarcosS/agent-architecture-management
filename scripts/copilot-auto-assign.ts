@@ -3,7 +3,6 @@ import * as github from '@actions/github';
 
 const COPILOT_BOT = 'copilot-swe-agent[bot]';
 const MAX_INSTRUCTIONS_CHARS = 1200;
-const DEFAULT_MODEL = (process.env.DEFAULT_COPILOT_MODEL || 'Claude Sonnet 4.5').trim();
 
 function lineValue(body: string, key: string): string {
   const re = new RegExp(`^\\s*${key}\\s*:\\s*(.+)\\s*$`, 'im');
@@ -149,7 +148,7 @@ async function run(): Promise<void> {
 
   const customAgent = normalizeAgent(ownerAgentRaw);
   const modelRaw = lineValue(body, 'Model');
-  const model = normalizeModel(modelRaw || DEFAULT_MODEL);
+  const model = modelRaw ? normalizeModel(modelRaw) : '';
 
   const gate = lineValue(body, 'Gate') || 'None';
   const dependencies = lineValue(body, 'Dependencies') || 'None';
@@ -172,7 +171,7 @@ async function run(): Promise<void> {
   const assignees = (issue.assignees || []) as Array<{ login?: string }>;
   if (assignees.some((a) => (a.login || '').toLowerCase() === COPILOT_BOT.toLowerCase())) {
     core.info('Issue already assigned to copilot-swe-agent[bot]; skipping for idempotency.');
-    core.info(`Requested custom_agent=${customAgent}, model=${model}. Existing assignment effect is unknown from issue payload.`);
+    core.info(`Requested custom_agent=${customAgent}, model=${model || '(omitted)'}. Existing assignment effect is unknown from issue payload.`);
     return;
   }
 
@@ -186,7 +185,17 @@ async function run(): Promise<void> {
     core.warning(`Could not fetch repo default branch; using fallback '${baseBranch}'.`);
   }
 
-  core.info(`Attempting assignment: issue=#${issueNumber} custom_agent=${customAgent} model=${model} base_branch=${baseBranch}`);
+  core.info(`Attempting assignment: issue=#${issueNumber} custom_agent=${customAgent} model=${model || '(omitted)'} base_branch=${baseBranch}`);
+
+  const agentAssignment: Record<string, string> = {
+    target_repo: `${owner}/${repo}`,
+    base_branch: baseBranch,
+    custom_instructions: customInstructions,
+    custom_agent: customAgent,
+  };
+  if (model) {
+    agentAssignment.model = model;
+  }
 
   try {
     await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/assignees', {
@@ -194,20 +203,14 @@ async function run(): Promise<void> {
       repo,
       issue_number: issueNumber,
       assignees: [COPILOT_BOT],
-      agent_assignment: {
-        target_repo: `${owner}/${repo}`,
-        base_branch: baseBranch,
-        custom_instructions: customInstructions,
-        custom_agent: customAgent,
-        model,
-      },
+      agent_assignment: agentAssignment,
       headers: {
         accept: 'application/vnd.github+json',
         'x-github-api-version': '2022-11-28',
       },
     });
 
-    core.info(`Copilot assignment request sent successfully. custom_agent=${customAgent}, model=${model}`);
+    core.info(`Copilot assignment request sent successfully. custom_agent=${customAgent}, model=${model || '(omitted)'}`);
   } catch (e: any) {
     const status = Number(e?.status || 0);
     const message = String(e?.message || 'Unknown error');
