@@ -1,0 +1,304 @@
+tools:
+  # ── Issue tools ──────────────────────────────────────────────────────────
+  - id: issue_write
+    name: Issue Write
+    description: Create a new issue or update an existing issue (title, body, labels, assignees, state).
+    category: issues
+    operations: [create, update]
+    creates_issues: true
+    updates_issues: true
+
+  - id: add_issue_comment
+    name: Add Issue Comment
+    description: Add a comment to an existing issue or pull request.
+    category: issues
+    operations: [comment]
+    creates_issues: false
+    updates_issues: false
+
+  - id: list_issues
+    name: List Issues
+    description: List issues in a GitHub repository with optional state and label filters.
+    category: issues
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: search_issues
+    name: Search Issues
+    description: Search for issues using GitHub's issue search syntax.
+    category: issues
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: issue_read
+    name: Issue Read
+    description: Read issue details, comments, sub-issues, or labels for a specific issue.
+    category: issues
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: sub_issue_write
+    name: Sub-Issue Write
+    description: Add, remove, or reprioritize sub-issues within a parent issue.
+    category: issues
+    operations: [add, remove, reprioritize]
+    creates_issues: false
+    updates_issues: true
+
+  # ── Pull Request tools ────────────────────────────────────────────────────
+  - id: create_pull_request
+    name: Create Pull Request
+    description: Open a new pull request between two branches.
+    category: pull_requests
+    operations: [create]
+    creates_issues: false
+    updates_issues: false
+
+  - id: update_pull_request
+    name: Update Pull Request
+    description: Update a pull request's title, body, state, base branch, or reviewers.
+    category: pull_requests
+    operations: [update]
+    creates_issues: false
+    updates_issues: false
+
+  - id: pull_request_read
+    name: Pull Request Read
+    description: Read pull request details, diff, status, files, review comments, reviews, or comments.
+    category: pull_requests
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: merge_pull_request
+    name: Merge Pull Request
+    description: Merge a pull request using merge, squash, or rebase strategy.
+    category: pull_requests
+    operations: [merge]
+    creates_issues: false
+    updates_issues: false
+
+  - id: pull_request_review_write
+    name: Pull Request Review Write
+    description: Create, submit, or delete a pull request review.
+    category: pull_requests
+    operations: [create, submit, delete]
+    creates_issues: false
+    updates_issues: false
+
+  - id: add_comment_to_pending_review
+    name: Add Comment to Pending Review
+    description: Add a review comment to an existing pending pull request review.
+    category: pull_requests
+    operations: [comment]
+    creates_issues: false
+    updates_issues: false
+
+  - id: add_reply_to_pull_request_comment
+    name: Add Reply to Pull Request Comment
+    description: Reply to an existing pull request comment.
+    category: pull_requests
+    operations: [comment]
+    creates_issues: false
+    updates_issues: false
+
+  - id: search_pull_requests
+    name: Search Pull Requests
+    description: Search for pull requests using GitHub search syntax.
+    category: pull_requests
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: list_pull_requests
+    name: List Pull Requests
+    description: List pull requests in a repository with state, head, and base filters.
+    category: pull_requests
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: update_pull_request_branch
+    name: Update Pull Request Branch
+    description: Update the branch of a pull request with the latest changes from its base branch.
+    category: pull_requests
+    operations: [update]
+    creates_issues: false
+    updates_issues: false
+
+  # ── Repository & File tools ───────────────────────────────────────────────
+  - id: create_repository
+    name: Create Repository
+    description: Create a new GitHub repository.
+    category: repository
+    operations: [create]
+    creates_issues: false
+    updates_issues: false
+
+  - id: get_file_contents
+    name: Get File Contents
+    description: Retrieve the contents of a file or directory from a repository.
+    category: repository
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: create_or_update_file
+    name: Create or Update File
+    description: Create or update a single file in a repository with a commit.
+    category: repository
+    operations: [create, update]
+    creates_issues: false
+    updates_issues: false
+
+  - id: push_files
+    name: Push Files
+    description: Push multiple files to a repository in a single commit.
+    category: repository
+    operations: [create, update]
+    creates_issues: false
+    updates_issues: false
+
+  - id: delete_file
+    name: Delete File
+    description: Delete a file from a repository.
+    category: repository
+    operations: [delete]
+    creates_issues: false
+    updates_issues: false
+
+  - id: fork_repository
+    name: Fork Repository
+    description: Fork a repository to your account or a specified organization.
+    category: repository
+    operations: [create]
+    creates_issues: false
+    updates_issues: false
+
+  - id: search_repositories
+    name: Search Repositories
+    description: Find GitHub repositories by name, description, topics, or other metadata.
+    category: repository
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  # ── Branch & Commit tools ─────────────────────────────────────────────────
+  - id: create_branch
+    name: Create Branch
+    description: Create a new branch in a repository.
+    category: branches
+    operations: [create]
+    creates_issues: false
+    updates_issues: false
+
+  - id: list_branches
+    name: List Branches
+    description: List all branches in a repository.
+    category: branches
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: list_commits
+    name: List Commits
+    description: List commits on a branch with optional author filter.
+    category: branches
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: get_commit
+    name: Get Commit
+    description: Get details and diff for a specific commit.
+    category: branches
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  # ── Release & Tag tools ───────────────────────────────────────────────────
+  - id: list_releases
+    name: List Releases
+    description: List releases in a repository.
+    category: releases
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: get_latest_release
+    name: Get Latest Release
+    description: Get the latest release in a repository.
+    category: releases
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: get_release_by_tag
+    name: Get Release by Tag
+    description: Get a specific release by its tag name.
+    category: releases
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: list_tags
+    name: List Tags
+    description: List git tags in a repository.
+    category: releases
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: get_tag
+    name: Get Tag
+    description: Get details about a specific git tag.
+    category: releases
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  # ── Search & User tools ───────────────────────────────────────────────────
+  - id: search_code
+    name: Search Code
+    description: Fast code search across GitHub repositories using native search engine.
+    category: search
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  - id: search_users
+    name: Search Users
+    description: Find GitHub users by username, real name, or profile information.
+    category: search
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  # ── Label & Milestone tools ───────────────────────────────────────────────
+  - id: get_label
+    name: Get Label
+    description: Get a specific label from a repository.
+    category: labels
+    operations: [read]
+    creates_issues: false
+    updates_issues: false
+
+  # ── Copilot / Review tools ────────────────────────────────────────────────
+  - id: request_copilot_review
+    name: Request Copilot Review
+    description: Request a GitHub Copilot automated code review for a pull request.
+    category: reviews
+    operations: [create]
+    creates_issues: false
+    updates_issues: false
+
+  - id: assign_copilot_to_issue
+    name: Assign Copilot to Issue
+    description: Assign GitHub Copilot as an agent to work on a specific issue.
+    category: reviews
+    operations: [assign]
+    creates_issues: false
+    updates_issues: false
