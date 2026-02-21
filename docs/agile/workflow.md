@@ -72,15 +72,16 @@ All of the following run concurrently once Phase 0 is complete:
 - **pm** (child of #25): PRD + user stories US-001…US-012 + acceptance criteria — Gate A
 - **designer** (child of #25): UX notes + permission flows + IA for RBAC UI + observability dashboards — Gate A
 - **process** (child of #25): Dependency map + risk register refinement — Gate A/B
+- **security** (child of #25): Begin STRIDE threat model draft (risk discovery; finalizes at Gate D) — see R-006 mitigation
 
 ### Phase 2 — Technical Planning (Gate B — depends on Gate A outputs)
 - **swe** (child of #25): Tech plan for RBAC middleware, event bus, outbox/inbox, observability pipeline, task breakdown — Gate B
 
-### Phase 3 — Quality & Compliance (Gate C/D — depends on Gate B outputs)
+### Phase 3 — Quality (Gate C — depends on Gate B outputs)
 - **qa** (child of #25): Test strategy + test cases mapped to US-001…US-012 with risk-based prioritization — Gate C
-- **security** (child of #25): STRIDE threat model for authz/authn, data boundaries, PII, secrets handling — Gate D *(draft starts in parallel; finalizes at Gate D)*
 
 ### Phase 4 — Release Readiness (Gate D — depends on Gate C + SEC outputs)
+- **security** (child of #25): Finalize STRIDE threat model (draft started in Phase 1) for authz/authn, data boundaries, PII, secrets handling — Gate D
 - **devops** (child of #25): Release checklist + env notes + rollback + migration safety — Gate D
 
 ### Phase 5 — Backlog Freeze (Architect)
@@ -97,6 +98,7 @@ All of the following run concurrently once Phase 0 is complete:
 - UX notes and flows exist for RBAC management UI and observability dashboards (`docs/design/ux-notes.md`)
 - Cross-agent dependency map is complete and non-contradictory
 - No unresolved open questions blocking Gate B
+- **Architect cross-reference review:** architect has reviewed all Gate A outputs (PRD, UX notes, dependency map) for consistency before unblocking Gate B (mitigates R-007)
 
 ### Gate B — Tech Ready *(testable)*
 **Owner:** swe (+architect)

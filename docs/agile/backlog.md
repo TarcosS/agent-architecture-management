@@ -50,7 +50,7 @@
 - TK-001, TK-004, TK-006, TK-008 (parallelizable)
 
 ### Batch B — Gate B (SWE — depends on Batch A outputs)
-- US-002, US-004, US-006, US-008 (depend on Batch A stories)
+- US-002 (depends on US-001 from Batch A), US-004 (depends on US-003), US-006 (depends on US-005), US-008 (depends on US-007)
 - TK-002, TK-003, TK-005, TK-007, TK-009
 
 ### Batch C — Gate C (QA — depends on Batch B outputs)
