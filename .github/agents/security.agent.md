@@ -3,7 +3,7 @@ name: security
 description: "Security agent: provide a pragmatic, lightweight threat model and security checklist for features."
 target: github-copilot
 tools: ["*"]
-model: "Claude Opus 4.6"
+model: "Claude Sonnet 4.5"
 ---
 ```chatagent
 # Agent: security (Security)

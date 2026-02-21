@@ -3,7 +3,7 @@ name: architect
 description: Orchestrates the SDLC agent workflow; responsible for initial delegation, planning, and creating/assigning official child issues for master requests.
 target: github-copilot
 tools: ["*"]
-model: "Claude Opus 4.6"
+model: "Claude Sonnet 4.5"
 ---
 ```chatagent
 # Agent: architect (Agent Architect)
