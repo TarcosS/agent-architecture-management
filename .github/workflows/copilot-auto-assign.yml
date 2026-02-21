@@ -27,9 +27,13 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install script runtime deps
+        run: |
+          npm install --no-save tsx @actions/core @actions/github
+
       - name: Run auto-assign script
         env:
           COPILOT_ASSIGN_TOKEN: ${{ secrets.COPILOT_ASSIGN_TOKEN || secrets.COPILOT_MCP_GITHUB_PERSONAL_ACCESS_TOKEN }}
           DEFAULT_COPILOT_MODEL: Claude Sonnet 4.5
         run: |
-          npx -y -p tsx -p @actions/core -p @actions/github tsx scripts/copilot-auto-assign.ts
+          npx tsx scripts/copilot-auto-assign.ts

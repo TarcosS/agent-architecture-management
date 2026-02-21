@@ -62,6 +62,7 @@ Custom agents are read from:
 Workflow file:
 
 - `.github/workflows/copilot-auto-assign.yml`
+- Runtime installs `tsx`, `@actions/core`, `@actions/github` before executing the TypeScript script.
 
 Triggers:
 
