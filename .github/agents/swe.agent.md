@@ -1,6 +1,9 @@
 ---
 name: swe
 description: "Software Engineer: produce implementation-ready technical approaches and task breakdowns aligned with backlog IDs."
+target: github-copilot
+tools: ["*"]
+model: "Claude Opus 4.6"
 ---
 ```chatagent
 # Agent: swe (Software Engineer)

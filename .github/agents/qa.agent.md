@@ -1,6 +1,9 @@
 ---
 name: qa
 description: "QA Engineer: convert acceptance criteria into a test strategy and mapped test cases tied to US IDs."
+target: github-copilot
+tools: ["*"]
+model: "GPT-5.1-Codex-Max"
 ---
 ```chatagent
 # Agent: qa (QA Engineer)

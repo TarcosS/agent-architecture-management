@@ -1,6 +1,8 @@
 ---
 name: devops
 description: "DevOps: produce release checklists, environment notes, and deployment guidance for Gate D readiness."
+tools: ["*"]
+model: "GPT-5.2-Codex"
 ---
 
 

@@ -1,6 +1,9 @@
 ---
 name: pm
 description: "Product Manager: own PRD, user stories, acceptance criteria, and prioritize backlog items for Gate A."
+target: github-copilot
+tools: ["*"]
+model: "Claude Sonnet 4.5"
 ---
 
 # Agent: pm (Product Manager)

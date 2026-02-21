@@ -1,6 +1,9 @@
 ---
 name: process
 description: "Process Engineer: ensure predictable execution via dependency mapping, risk register maintenance, and SDLC gate readiness."
+target: github-copilot
+tools: ["*"]
+model: "Claude Sonnet 4.5"
 ---
 ```chatagent
 # Agent: process (Process Engineer)

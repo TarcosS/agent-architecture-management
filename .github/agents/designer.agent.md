@@ -1,6 +1,9 @@
 ---
 name: designer
 description: "Designer: produce UX notes, flows, IA, and design artifacts that support PRD and Gate A readiness."
+target: github-copilot
+tools: ["*"]
+model: "Claude Opus 4.6"
 ---
 
 # Agent: designer (UX/UI Designer)
