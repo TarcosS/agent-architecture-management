@@ -218,7 +218,7 @@ The multi-app platform requires a robust end-to-end testing framework that can h
 6. Verify audit logs (PII allowed here for forensics)
 
 **Expected Result**:
-- Application logs show: `email: a***e@***.com`, `phone: ***-1234`, `ssn: ***-**-6789`
+- Application logs show masked PII using a consistent pattern (e.g., `email: ***@***.com`, `phone: ***-***-1234`, `ssn: ***-**-6789`); the exact masking algorithm (e.g., show last 4 digits only) must match the project's masking specification
 - Distributed traces contain masked PII in all attributes
 - Metrics labels contain user IDs, not PII
 - Audit logs contain unmasked PII (intentional for compliance)
@@ -625,7 +625,7 @@ The multi-app platform requires a robust end-to-end testing framework that can h
 1. Capture retry timestamps
 2. Calculate delays between attempts
 
-**Expected Result**: Delays follow exponential backoff: 1s, 2s, 4s, 8s  
+**Expected Result**: Delays follow exponential backoff: 1s, 2s, 4s (3 retries)  
 **Pass Criteria**: Measured delays within ±200ms of expected
 
 ---
@@ -1059,7 +1059,7 @@ The multi-app platform requires a robust end-to-end testing framework that can h
 **Test Steps**:
 1. Trigger code path that logs user details (e.g., user registration error)
 2. Search application logs for plaintext PII patterns:
-   - Regex: `\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b` (email)
+   - Regex: `\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b` (email)
    - Regex: `\b\d{3}-\d{2}-\d{4}\b` (SSN)
    - Regex: `\b\d{3}-\d{4}\b` (phone)
 3. Verify PII is masked
@@ -1067,7 +1067,7 @@ The multi-app platform requires a robust end-to-end testing framework that can h
 5. Verify PII detection scanner triggers alert
 
 **Expected Result**:
-- Logs show masked PII: `email: a***e@***.com`, `ssn: ***-**-6789`, `phone: ***-1234`
+- Logs show masked PII using a consistent pattern (e.g., `email: ***@***.com`, `ssn: ***-**-6789`, `phone: ***-***-1234`); pattern must match the project's masking specification
 - No plaintext PII in any log statement
 - Structured logging fields also masked: `{"email":"a***e@***.com"}`
 - PII detection scanner (if triggered) alerts security team within 1 minute
@@ -1077,7 +1077,7 @@ The multi-app platform requires a robust end-to-end testing framework that can h
 - Masking library applied to all logging statements
 - Exception stack traces also masked
 
-**Compliance Impact**: CRITICAL - Unmasked PII violates GDPR/CCPA, potential fines €20M or 4% revenue
+**Compliance Impact**: CRITICAL - Unmasked PII violates GDPR/CCPA, potential fines up to €20M or 4% of annual worldwide turnover, whichever is higher
 
 ---
 
@@ -1195,7 +1195,7 @@ The multi-app platform requires a robust end-to-end testing framework that can h
 - P1 (High): 18 test cases (32%)
 - P2 (Medium): 4 test cases (7%)
 
-**By Type**:
+**By Type** *(test cases may span multiple types)*:
 - Functional: 28 test cases (49%)
 - Negative: 15 test cases (26%)
 - Integration: 18 test cases (32%)
