@@ -29,7 +29,7 @@ This document provides a comprehensive STRIDE-based threat model for the Agent A
 - **Availability:** Prevent denial of service and ensure system resilience
 - **Accountability:** Maintain comprehensive audit trails for compliance (GDPR, SOC2)
 
-**Critical Threats Identified:** 8 threats with severity Critical (2), High (3), Medium (2), Low (1)
+**Critical Threats Identified:** 10 threats with severity Critical (2), High (4), Medium (3), Low (1)
 
 ---
 
