@@ -1,10 +1,21 @@
 # Agile Workflow (Agent-Orchestrated)
 
 ## Work Item Brief
-- **Task:** <USER_PROMPT.Task>
-- **Constraints:** <USER_PROMPT.Constraints>
-- **Acceptance Criteria:** <USER_PROMPT.Acceptance Criteria>
-- **Notes:** <USER_PROMPT.Notes>
+- **Task:** Prepare the existing Vite React TS project to work under the Agent-Agile workflow. Generate planning artifacts (workflow.md, backlog.md, risks.md), create official child issues labeled aa:child and aa:delegated-by-architect, and assign each to the correct agent. This is orchestration mode only—no PR, no code changes under /apps/web.
+- **Constraints:** 
+  - Do NOT modify code under /apps/web yet
+  - Do NOT open a pull request
+  - Only generate planning artifacts and delegation
+- **Acceptance Criteria:** 
+  1. Generate docs/agile/workflow.md, docs/agile/backlog.md, docs/agile/risks.md with real content (not placeholders)
+  2. Create official child issues labeled: aa:child, aa:delegated-by-architect
+  3. Assign each child issue to the correct agent
+  4. Stop after delegation—no implementation
+- **Notes:** 
+  - No PR opened
+  - At least 5 child issues created
+  - Backlog contains EP/US/TK IDs
+  - Current repo has: /apps/web (Vite React TS boilerplate with React 19, TypeScript 5.9, Vite 7, ESLint 9), /agents/ (registry, prompts), /docs/agile/ (template files), .github/ (issue templates, agent markdown)
 
 ## Agents In Use (from agents/registry.yaml)
 - architect: Orchestration + final merge
