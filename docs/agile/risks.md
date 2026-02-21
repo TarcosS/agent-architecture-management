@@ -199,7 +199,7 @@ TK-001 → TK-011 → TK-012 (Migration path: 3 tasks deep)
 - [ ] PRD complete (docs/product/prd.md exists)
 - [ ] User stories written with testable AC (US-001…US-00X in backlog.md)
 - [ ] Assumptions A1–A6 validated (process)
-- [ ] Open questions Q1, Q3, Q4, Q5 answered or delegated
+- [ ] Open questions Q1, Q3, Q4, Q5 answered or delegated (Q2 already answered: greenfield)
 - [ ] Designer UX notes + flows complete (docs/design/ux-notes.md)
 - [ ] Risk register R-001…R-008 reviewed by architect
 
