@@ -72,7 +72,7 @@
 A story is “Ready” if:
 - AC is testable (Given/When/Then or bullet test points)
 - Dependencies listed
-- Owner agent assigned
+- Owner agent declared in issue body and GitHub custom-agent assignment applied via Copilot MCP (`owner`, `repo`, `issue_number`, `custom_instructions`, `custom_agent`, `model`)
 - Scope is bounded (non-goals stated)
 
 ## Definition of Done (DoD)

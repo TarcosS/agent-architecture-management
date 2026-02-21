@@ -11,6 +11,10 @@ body:
         - Owner-Agent:
         - Gate:
         - Dependencies:
+        
+        **Assignment note (GitHub Custom Agent):**
+        - After creation, run Copilot MCP assignment with: `owner`, `repo`, `issue_number`, `custom_instructions`, `custom_agent`, `model`
+        - `custom_agent` must match `Owner-Agent` and `model` must match that agent profile
   - type: textarea
     id: brief
     attributes:

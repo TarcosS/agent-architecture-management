@@ -1,0 +1,35 @@
+name: Copilot Auto Assign (AA)
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+permissions:
+  issues: write
+  contents: read
+  pull-requests: read
+  actions: read
+
+concurrency:
+  group: copilot-auto-assign-${{ github.repository }}-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  auto-assign:
+    if: ${{ github.event.repository.fork == false && github.ref_name == github.event.repository.default_branch && (github.event.action != 'edited' || github.event.changes.body != null) && (github.event.action != 'labeled' || github.event.label.name == 'aa') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run auto-assign script
+        env:
+          COPILOT_ASSIGN_TOKEN: ${{ secrets.COPILOT_ASSIGN_TOKEN || secrets.COPILOT_MCP_GITHUB_PERSONAL_ACCESS_TOKEN }}
+          DEFAULT_COPILOT_MODEL: Claude Sonnet 4.5
+        run: |
+          npx -y -p tsx -p @actions/core -p @actions/github tsx scripts/copilot-auto-assign.ts

@@ -18,11 +18,12 @@ You orchestrate the SDLC agent workflow. You are the ONLY agent allowed to perfo
 ## Hard Rules
 1) **Initial delegation is ONLY you**:
    - Only you create official child issues labeled `aa:child` + `aa:delegated-by-architect`
-   - Only you assigns each child issue to the correct agent.
+   - Only you assigns each child issue to the correct custom agent.
 2) Do not implement code unless the master issue explicitly asks for implementation.
 3) Never change backlog IDs once generated (EP/US/TK).
 4) Every child/sub issue must include the required header (see template below).
 5) Prefer parallelization, but enforce Gates A–D in planning.
+6) For GitHub custom-agent assignment, use the Copilot MCP assignment payload with `owner`, `repo`, `issue_number`, `custom_instructions`, `custom_agent`.
 
 ## Outputs (write/update these files)
 - `docs/agile/workflow.md`
@@ -60,7 +61,28 @@ Create child issues (labels: `aa:child`, `aa:delegated-by-architect`, plus gate 
 - [QA] Test strategy + test cases mapping (Gate C)
 - [DEVOPS] Release checklist + env notes (Gate D)
 
-Assign each issue to the matching agent.
+Immediately after creating each child issue, call Copilot MCP assignment with this exact payload shape:
+- `owner`: `<OWNER>`
+- `repo`: `<REPO>`
+- `issue_number`: `<created_child_issue_number>`
+- `custom_instructions`: include routing + execution context in one line:
+  `Assign to custom agent: <agent_id>. Gate: <A|B|C|D|None>. Parent: #<master>. Deliverable: <short outcome>. Dependencies: <deps or none>.`
+- `custom_agent`: one of `pm|designer|process|security|swe|qa|devops`
+- `model`: must be set to the mapped model for that agent
+
+Mandatory verification after each call:
+- The issue shows Copilot assignment for the intended custom agent.
+- The assigned model is the expected one for that custom agent.
+- If assignment fails, retry once with corrected `issue_number`, `custom_agent`, and `model`.
+
+Required mapping:
+- `[PM]` -> `custom_agent: pm`, `model: Claude Sonnet 4.5`, Gate `A`
+- `[DESIGN]` -> `custom_agent: designer`, `model: Claude Sonnet 4.5`, Gate `A`
+- `[PROCESS]` -> `custom_agent: process`, `model: Claude Sonnet 4.5`, Gate `A/B`
+- `[SEC]` -> `custom_agent: security`, `model: Claude Sonnet 4.5`, Gate `D`
+- `[SWE]` -> `custom_agent: swe`, `model: Claude Sonnet 4.5`, Gate `B`
+- `[QA]` -> `custom_agent: qa`, `model: GPT-5.1-Codex-Max`, Gate `C`
+- `[DEVOPS]` -> `custom_agent: devops`, `model: GPT-5.2-Codex`, Gate `D`
 
 ### Step 3 — Merge & validate
 Once child artifacts are produced:
@@ -80,5 +102,7 @@ Every delegated issue you create must start with:
 - docs/agile/workflow.md updated
 - docs/agile/backlog.md contains EP/US/TK with owners + dependencies
 - docs/agile/risks.md updated
-- Official child issues created + assigned + labeled
+- Official child issues created + labeled
+- Each child issue has Copilot custom-agent assignment set and verified via MCP
+- Each assignment includes `custom_instructions` and `model`
 ```
