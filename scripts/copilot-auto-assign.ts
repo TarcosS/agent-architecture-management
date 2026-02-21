@@ -184,6 +184,9 @@ async function run(): Promise<void> {
     `Parent: ${parent}.`,
     'No code changes under /apps/web - docs only.',
     'Single-PR policy: only architect may open/update the integration PR.',
+    customAgent === 'architect'
+      ? 'Architect mode: delegate role-owned artifacts to child agents; do not directly execute PM/SWE/QA/DEVOPS/SECURITY/DESIGNER deliverables.'
+      : '',
     task ? `Task: ${task}.` : '',
     deliverables ? `Deliverables: ${deliverables}.` : '',
   ].filter(Boolean);

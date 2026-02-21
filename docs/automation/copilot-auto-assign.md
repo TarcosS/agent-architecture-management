@@ -57,6 +57,7 @@ Model priority:
 Assignment mode:
 1. If `COPILOT_ASSIGN_ONLY_ARCHITECT=true`, non-architect issues are not assigned to Copilot and receive an informational comment.
 2. Set `COPILOT_ASSIGN_ONLY_ARCHITECT=false` to allow direct assignment for all owner agents.
+3. In architect mode, custom instructions enforce delegation-first behavior (architect should create/route child work, not execute role-owned artifacts directly).
 
 ## Custom Agents Source
 Custom agents are read from:
