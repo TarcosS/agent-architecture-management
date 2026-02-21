@@ -53,7 +53,6 @@
 
 **Blockers:**
 - Circular dependencies detected in TK graph
-- Greenfield vs. existing infrastructure unclear (Q2)
 - Missing dependency specification for any TK
 - OIDC provider availability not validated (A3)
 
