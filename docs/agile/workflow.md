@@ -1,10 +1,14 @@
 # Agile Workflow (Agent-Orchestrated)
 
 ## Work Item Brief
-- **Task:** <USER_PROMPT.Task>
-- **Constraints:** <USER_PROMPT.Constraints>
-- **Acceptance Criteria:** <USER_PROMPT.Acceptance Criteria>
-- **Notes:** <USER_PROMPT.Notes>
+- **Task:** Verify that MCP write functionality works end-to-end (issue creation, comment, file writes via GitHub MCP tools)
+- **Constraints:** Test scope only — no production code changes required; keep changes minimal and reversible
+- **Acceptance Criteria:**
+  - MCP `issue_write` (create/update) confirmed working
+  - MCP `push_files` / `create_or_update_file` confirmed working
+  - Child issues created and assigned via MCP
+  - Agile docs updated via MCP file-write
+- **Notes:** This is a test master issue (#6) created to validate MCP tooling. Agents should treat it as a minimal Gate A–D dry-run.
 
 ## Agents In Use (from agents/registry.yaml)
 - architect: Orchestration + final merge
