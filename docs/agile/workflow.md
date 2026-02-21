@@ -27,26 +27,66 @@
 ## Gates (Hard Rules)
 ### Gate A — Product Ready
 **Owner:** pm (+architect)
-- PRD ready
-- User stories ready
-- Acceptance criteria per story ready
+
+**Criteria:**
+- PRD ready (docs/product/prd.md exists)
+- User stories ready with testable AC (US-001…US-00X)
+- Acceptance criteria per story ready (Given/When/Then format)
+- Assumptions validated (A1–A6 from risks.md)
+- Designer UX notes + flows complete
+- Risk register reviewed (R-001…R-008)
+
+**Blockers:**
+- Missing AC for any user story
+- Critical open questions unanswered (e.g., Q4: broker choice)
+- Scale estimates missing (Q5)
 
 ### Gate B — Tech Ready
 **Owner:** swe (+architect)
-- Tech approach written
-- Dependencies identified
+
+**Criteria:**
+- Tech approach written (docs/architecture/tech-plan.md)
+- Dependencies identified (TK-to-TK mapping)
 - ADR opened if architectural decision exists
+- Tasks TK-001…TK-013 decomposed with DoD
+- Critical path identified (see risks.md Section 7)
+
+**Blockers:**
+- Circular dependencies detected in TK graph
+- Greenfield vs. existing infrastructure unclear (Q2)
+- Missing dependency specification for any TK
+- OIDC provider availability not validated (A3)
 
 ### Gate C — Quality Ready
 **Owner:** qa
-- Test strategy updated
-- Test cases mapped to user stories
+
+**Criteria:**
+- Test strategy updated (docs/quality/test-strategy.md)
+- Test cases mapped to user stories (one-to-many)
+- E2E smoke test scope defined (TK-013 DoD clear)
+- Risk-based test prioritization applied (P0: R-002, R-003, R-006)
+- Performance test plan for event throughput (R-007)
+
+**Blockers:**
+- No test cases for high-impact risks
+- TK-013 DoD missing or vague
+- No negative test cases for RBAC scenarios
 
 ### Gate D — Release Ready
 **Owner:** devops (+security)
-- Release checklist ready
-- Threat model lite reviewed
-- Rollback notes present (if applicable)
+
+**Criteria:**
+- Release checklist ready (docs/devops/release-checklist.md)
+- Threat model lite reviewed (docs/security/threat-model.md)
+- Rollback notes present (TK-012 complete)
+- CI/CD pipeline configured (zero-downtime deploy)
+- Monitoring dashboards + alerts configured (TK-009)
+- Secrets management strategy validated
+
+**Blockers:**
+- No rollback procedure for infrastructure changes (TK-004 broker, TK-011 migrations)
+- Missing PII redaction validation (R-003)
+- No incident response plan for critical outages (R-001, R-005)
 
 ## Parallelization Plan
 ### Phase 0 — Intake (Architect)
