@@ -134,7 +134,7 @@ Start all of these concurrently:
 
 2. **A3 Violation (No OIDC Provider Available)**  
    *Impact*: TK-010 (auth integration) cannot proceed. Requires provisioning a new identity provider (2-4 weeks for vendor selection + setup).  
-   *Mitigation*: Q3 must be answered before Gate B. If no provider exists, create fallback US for "Basic Auth MVP" to unblock development.
+   *Mitigation*: Validate A3 before Gate B (confirm OIDC provider is accessible and supports required flows). If no provider exists, create fallback US for "Basic Auth MVP" to unblock development.
 
 3. **A4 Violation (Zero-Downtime Not Required)**  
    *Impact*: Simplifies TK-011 (migrations) significantly. Allows blue-green cutover with brief downtime window.  
@@ -224,7 +224,6 @@ TK-001 → TK-011 → TK-012 (Migration path: 3 tasks deep)
 **Blockers (Red Flags)**:
 - Missing dependency specification for any TK
 - Circular dependency detected in TK graph
-- Q2 (greenfield/existing broker) not answered → TK-004 scope unclear
 - A3 (OIDC provider availability) not validated → TK-010 at risk
 
 ---
