@@ -23,7 +23,7 @@
 | ID | Story | Task | Owner Agent | Dependencies | Definition of Done |
 |---|---|---|---|---|---|
 | TK-001 | US-001 | Create docs/product/prd.md with project vision, user stories, and acceptance criteria | pm | none | - PRD file exists at docs/product/prd.md<br>- Contains project vision and objectives<br>- User stories documented<br>- Acceptance criteria per story<br>- Non-goals section completed |
-| TK-002 | US-002 | Create docs/architecture/tech-plan.md documenting current tech stack and agent-agile approach | swe | TK-001 | - Tech plan file exists at docs/architecture/tech-plan.md<br>- Current stack documented (React 19, TS 5.9, Vite 7, ESLint 9)<br>- Agent-agile integration approach defined<br>- Dependencies listed<br>- ADR created if architectural decision needed |
+| TK-002 | US-002 | Create docs/architecture/tech-plan.md documenting current tech stack and agent-agile approach | swe | TK-001 | - Tech plan file exists at docs/architecture/tech-plan.md<br>- Current stack documented (React 19, TS 5.9, Vite 7, ESLint 9)<br>- Agent-agile integration approach defined<br>- Dependencies listed<br>- ADR created at docs/architecture/adr/ when a significant architectural decision is needed (e.g. test framework adoption) |
 | TK-003 | US-003 | Create docs/quality/test-strategy.md with test approach and case mapping | qa | TK-001 | - Test strategy file exists at docs/quality/test-strategy.md<br>- Test types defined (unit, integration, e2e)<br>- Test cases mapped to US IDs<br>- Coverage goals documented<br>- Testing tools identified (to be chosen) |
 | TK-004 | US-004 | Create docs/devops/release-checklist.md with deployment readiness criteria | devops | TK-002 | - Release checklist file exists at docs/devops/release-checklist.md<br>- Environment checks documented<br>- Deployment steps outlined<br>- Rollback procedures defined<br>- Post-deployment validation steps listed |
 | TK-005 | US-008 | Create docs/security/threat-model.md with STRIDE analysis and security checklist | security | TK-002 | - Threat model file exists at docs/security/threat-model.md<br>- STRIDE threats identified<br>- Mitigation strategies documented<br>- Security checklist created<br>- Data flow considerations noted |
@@ -39,7 +39,8 @@
 | TK-015 | US-007 | Create child issue for Designer agent: UX Notes + Flows + IA | architect | TK-014 | - Issue created with title "[DESIGN] Create UX Notes and Agent Workflow Flows"<br>- Labels: aa:child, aa:delegated-by-architect, gate-a<br>- Assigned to: designer<br>- Required header included with parent issue, gate, dependencies |
 
 ## Parallel Work Batches (optional)
-- **Batch A (Planning - Gate A):** US-001 (PM: PRD), US-008 (Security: Threat Model), TK-014 (Designer: UX Notes) — can run in parallel
-- **Batch B (Technical - Gate B):** US-002 (SWE: Tech Plan), US-006 (Process: Repo Map) — can run in parallel after Gate A
-- **Batch C (Quality & Release - Gates C & D):** US-003 (QA: Test Strategy), US-004 (DevOps: Release Checklist), US-005 (Process: Gate Scripts) — can run in parallel after Gate B
-- **Batch D (Delegation):** US-007 (Architect: Create all 7 child issues) — runs after all planning artifacts are ready
+- **Batch A (Gate A - no prior deps):** US-001 (PM: PRD), US-006 (Process: Repo Map), TK-014 (Designer: UX Notes) — can run in parallel immediately
+- **Batch B (Gate B - after Gate A artifacts):** US-002 (SWE: Tech Plan), US-003 (QA: Test Strategy) — can run in parallel after Batch A
+- **Batch C (Gates C & D - after Gate B artifacts):** US-004 (DevOps: Release Checklist), US-008 (Security: Threat Model) — can run in parallel after Batch B
+- **Batch D (Gate Scripts - after all artifact gates):** US-005 (Process: Gate Scripts) — runs after Batches A–C are complete (all TK-001 through TK-005 done)
+- **Batch E (Delegation):** US-007 (Architect: Create all 7 child issues) — runs after all planning artifacts are ready
