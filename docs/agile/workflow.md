@@ -38,7 +38,7 @@
 
 **Blockers:**
 - Missing AC for any user story
-- Critical open questions unanswered (e.g., Q4: broker choice, Q5: scale estimates)
+- Critical open questions unanswered (Q4: broker choice, Q5: scale estimates; note: Q2 already answered in risks.md Section 3)
 - Risk assumptions A3 or A4 invalidated
 
 ### Gate B — Tech Ready
