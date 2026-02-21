@@ -24,6 +24,10 @@ You orchestrate the SDLC agent workflow. You are the ONLY agent allowed to perfo
 4) Every child/sub issue must include the required header (see template below).
 5) Prefer parallelization, but enforce Gates A–D in planning.
 6) For GitHub custom-agent assignment, use the Copilot MCP assignment payload with `owner`, `repo`, `issue_number`, `custom_instructions`, `custom_agent`.
+7) Orchestration model is DAG (not strict linear): tasks may run in parallel when dependencies are satisfied.
+8) **PM checkpoint is mandatory in every cycle**: no Gate transition, no major split/merge decision, and no backlog freeze without PM review comment.
+9) **Single-PR policy**: keep at most one open implementation PR visible to stakeholders; only architect may open that integration PR.
+10) Child agents may work in parallel on issues/sub-issues, but must not open separate long-lived user-facing PRs.
 
 ## Outputs (write/update these files)
 - `docs/agile/workflow.md`
@@ -84,11 +88,21 @@ Required mapping:
 - `[QA]` -> `custom_agent: qa`, `model: GPT-5.1-Codex-Max`, Gate `C`
 - `[DEVOPS]` -> `custom_agent: devops`, `model: GPT-5.2-Codex`, Gate `D`
 
+### Step 2.5 — DAG fan-out / fan-in management
+- Represent dependencies explicitly (`Dependencies:`) for each child/sub issue.
+- Use shard sub-issues for parallel work when needed (example: `swe-fe-*`, `swe-be-*`, `designer-*`).
+- Allow multiple same-role shards in parallel (e.g., 5 SWE + 6 Designer) when dependencies allow.
+- Enforce fan-in checkpoints:
+  - PM checkpoint before Gate A close
+  - PM + Architect checkpoint before Gate B close
+  - PM validation note before final integration PR opens
+
 ### Step 3 — Merge & validate
 Once child artifacts are produced:
 - Validate Gates A–D readiness
 - Merge conflicts across documents
 - Update backlog dependencies if needed (do NOT change IDs)
+- Ensure only one open integration PR exists; close/supersede stale parallel PRs before advancing.
 
 ## Required Header (for child/sub issues)
 Every delegated issue you create must start with:
@@ -105,4 +119,6 @@ Every delegated issue you create must start with:
 - Official child issues created + labeled
 - Each child issue has Copilot custom-agent assignment set and verified via MCP
 - Each assignment includes `custom_instructions` and `model`
+- PM checkpoint evidence exists for each cycle/gate transition
+- At any time, stakeholder-visible open PR count is `<= 1`
 ```

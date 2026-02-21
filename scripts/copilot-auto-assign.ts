@@ -94,6 +94,25 @@ async function commentTroubleshooting(
   await octokit.rest.issues.createComment({ owner, repo, issue_number, body });
 }
 
+async function commentNoPrMode(
+  octokit: ReturnType<typeof github.getOctokit>,
+  owner: string,
+  repo: string,
+  issue_number: number,
+  customAgent: string,
+): Promise<void> {
+  const body = [
+    `Copilot auto-assign skipped for \`${customAgent}\` due to single-PR policy.`,
+    '',
+    'Repository is currently in integration PR mode:',
+    '- Only `Owner-Agent: architect` is auto-assigned to Copilot coding agent.',
+    '- Child/sub issues should proceed as planning and review artifacts in issue comments/docs.',
+    '- Architect owns the single stakeholder-visible integration PR.',
+  ].join('\n');
+
+  await octokit.rest.issues.createComment({ owner, repo, issue_number, body });
+}
+
 async function run(): Promise<void> {
   const token = (process.env.COPILOT_ASSIGN_TOKEN || '').trim();
   if (!token) {
@@ -147,8 +166,10 @@ async function run(): Promise<void> {
   }
 
   const customAgent = normalizeAgent(ownerAgentRaw);
+  const forcedModelRaw = normalizeModel(process.env.COPILOT_ASSIGN_FORCE_MODEL || '');
   const modelRaw = lineValue(body, 'Model');
-  const model = modelRaw ? normalizeModel(modelRaw) : '';
+  const model = forcedModelRaw || (modelRaw ? normalizeModel(modelRaw) : '');
+  const onlyArchitectMode = (process.env.COPILOT_ASSIGN_ONLY_ARCHITECT || 'true').trim().toLowerCase() !== 'false';
 
   const gate = lineValue(body, 'Gate') || 'None';
   const dependencies = lineValue(body, 'Dependencies') || 'None';
@@ -162,6 +183,7 @@ async function run(): Promise<void> {
     `Dependencies: ${dependencies}.`,
     `Parent: ${parent}.`,
     'No code changes under /apps/web - docs only.',
+    'Single-PR policy: only architect may open/update the integration PR.',
     task ? `Task: ${task}.` : '',
     deliverables ? `Deliverables: ${deliverables}.` : '',
   ].filter(Boolean);
@@ -170,12 +192,17 @@ async function run(): Promise<void> {
 
   const assignees = (issue.assignees || []) as Array<{ login?: string }>;
   if (assignees.some((a) => (a.login || '').toLowerCase() === COPILOT_BOT.toLowerCase())) {
-    core.info('Issue already assigned to copilot-swe-agent[bot]; skipping for idempotency.');
-    core.info(`Requested custom_agent=${customAgent}, model=${model || '(omitted)'}. Existing assignment effect is unknown from issue payload.`);
-    return;
+    core.info('Issue already assigned to copilot-swe-agent[bot]; continuing to enforce custom agent assignment.');
+    core.info(`Requested custom_agent=${customAgent}, model=${model || '(omitted)'}; sending assignment payload again.`);
   }
 
   const octokit = github.getOctokit(token);
+
+  if (onlyArchitectMode && customAgent !== 'architect') {
+    core.info(`Skipping assignment for custom_agent=${customAgent} because COPILOT_ASSIGN_ONLY_ARCHITECT is enabled.`);
+    await commentNoPrMode(octokit, owner, repo, issueNumber, customAgent);
+    return;
+  }
 
   let baseBranch = eventDefaultBranch || 'main';
   try {

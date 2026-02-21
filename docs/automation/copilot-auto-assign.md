@@ -13,6 +13,8 @@ Include these lines in the issue body:
 Optional:
 
 - `Model: <supported model>`
+- Repository variable `COPILOT_ASSIGN_FORCE_MODEL` to enforce one model for all assignments
+- Repository variable `COPILOT_ASSIGN_ONLY_ARCHITECT` (default `true`) to restrict Copilot assignment to `Owner-Agent: architect`
 
 The workflow always includes this constraint in `custom_instructions`:
 
@@ -30,7 +32,7 @@ Payload:
 - `agent_assignment.base_branch`
 - `agent_assignment.custom_instructions`
 - `agent_assignment.custom_agent`
-- `agent_assignment.model` (only when `Model:` is present in issue body)
+- `agent_assignment.model` (when forced by repo variable or when `Model:` is present in issue body)
 
 Headers:
 
@@ -47,7 +49,14 @@ Headers:
    - Contents: Read
    - Pull requests: Read and write (recommended)
 
-If `Model:` is omitted in the issue, the workflow omits `agent_assignment.model` from the API request.
+Model priority:
+1. `vars.COPILOT_ASSIGN_FORCE_MODEL` (if set)
+2. `Model:` line in issue body
+3. Omit `agent_assignment.model`
+
+Assignment mode:
+1. If `COPILOT_ASSIGN_ONLY_ARCHITECT=true`, non-architect issues are not assigned to Copilot and receive an informational comment.
+2. Set `COPILOT_ASSIGN_ONLY_ARCHITECT=false` to allow direct assignment for all owner agents.
 
 ## Custom Agents Source
 Custom agents are read from:
@@ -73,6 +82,7 @@ Safety conditions:
 - Runs only on default branch workflow ref
 - Skips fork repositories
 - One concurrent run per issue number
+- Even if Copilot is already an assignee, workflow still sends `agent_assignment` to enforce `custom_agent`.
 
 ## Troubleshooting Checklist
 - Copilot coding agent is enabled in repository settings.

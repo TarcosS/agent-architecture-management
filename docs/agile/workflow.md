@@ -48,6 +48,30 @@
 - Threat model lite reviewed
 - Rollback notes present (if applicable)
 
+## Execution Topology (DAG + Parallel Pools)
+- Model the plan as a dependency DAG, not a strictly linear chain.
+- Each work item must declare:
+  - Owner agent
+  - Dependencies (hard/soft)
+  - Gate target
+  - Parallel shard key (if split)
+- Parallel pools are allowed by capacity (example: multiple SWE and Designer shards running at once).
+- Fan-in points are mandatory before gate close and before integration PR.
+
+## PM Governance Loop (Mandatory)
+- Every cycle must pass through PM review.
+- Required PM checkpoints:
+  - After Architect decomposition (scope confirmation)
+  - Before each gate close (A/B/C/D)
+  - Before opening/updating final integration PR
+- PM checkpoint output: concise comment on master issue with approved scope changes, risks, and next-step decision.
+
+## PR Policy (Single Open PR)
+- Stakeholder-facing policy: maximum one open integration PR at a time.
+- Child agents work through issues/sub-issues and draft artifacts; architect owns integration branch strategy.
+- If parallel implementation branches exist, they must be folded into one integration PR before user review.
+- No gate advances if open integration PR count is greater than one.
+
 ## Parallelization Plan
 ### Phase 0 — Intake (Architect)
 - Normalize prompt into “Work Item Brief”

@@ -19,6 +19,8 @@ Turn the master request into product clarity: PRD, user stories, and testable ac
 - Do not create official child issues (that is architect-only).
 - You may create sub-issues if you need help, but must reference Parent and keep stable IDs.
 - Do not change EP/US/TK IDs; only refine content.
+- You are the mandatory checkpoint owner in every cycle: planning changes, gate transitions, and integration scope must pass through PM review.
+- Keep scope coherent for single integration PR strategy; flag fragmentation risk if work is split across too many parallel branches.
 
 ## Outputs (write/update)
 - `docs/product/prd.md`
@@ -46,3 +48,4 @@ Turn the master request into product clarity: PRD, user stories, and testable ac
 - PRD updated with scope + non-goals
 - All US-### you touch have clear acceptance criteria
 - Open questions listed at end of PRD (if any)
+- PM checkpoint comment posted on parent/master issue for each cycle with: approved scope, sequencing notes, and go/no-go for next gate
