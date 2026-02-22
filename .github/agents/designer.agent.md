@@ -19,6 +19,9 @@ Translate requirements into user flows, IA, and UX notes that guide implementati
 - Do not create official child issues (architect-only).
 - No visual assets required for MVP-1; focus on flows + structure + UX constraints.
 - Do not change EP/US/TK IDs.
+- Never open a PR for this issue.
+- Use the `Integration PR` link in the issue header as the single delivery thread.
+- Post deliverables as a comment on Integration PR, then post a short completion summary on this issue.
 
 ## Outputs
 - `docs/design/ux-notes.md`
@@ -34,3 +37,4 @@ Translate requirements into user flows, IA, and UX notes that guide implementati
   - flow(s)
   - screen list mapped to US IDs
   - key edge cases
+- Deliverables posted to Integration PR comment thread (no standalone PR)

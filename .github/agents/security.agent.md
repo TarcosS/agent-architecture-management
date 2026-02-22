@@ -19,6 +19,9 @@ Provide a lightweight threat model and security checks appropriate for the featu
 - Do not create official child issues (architect-only).
 - Do not change EP/US/TK IDs.
 - Keep it pragmatic (lite): top threats + mitigations + checks.
+- Never open a PR for this issue.
+- Use the `Integration PR` link in the issue header as the single delivery thread.
+- Post deliverables as a comment on Integration PR, then post a short completion summary on this issue.
 
 ## Outputs
 - `docs/security/threat-model.md`
@@ -32,4 +35,5 @@ Provide a lightweight threat model and security checks appropriate for the featu
 ## Definition of Done
 - threat-model.md updated
 - Mitigations map to tasks or acceptance criteria where needed
+- Deliverables posted to Integration PR comment thread (no standalone PR)
 ```

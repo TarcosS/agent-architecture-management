@@ -11,10 +11,20 @@ body:
         - Owner-Agent:
         - Gate:
         - Dependencies:
+        - Integration PR:
+        - Posting Rule: Do NOT open PR. Post deliverables as a comment on Integration PR.
         
         **Assignment note (GitHub Custom Agent):**
         - After creation, run Copilot MCP assignment with: `owner`, `repo`, `issue_number`, `custom_instructions`, `custom_agent`, `model`
         - `custom_agent` must match `Owner-Agent` and `model` must match that agent profile
+  - type: input
+    id: integration_pr
+    attributes:
+      label: Integration PR
+      description: Link to the single architect-owned integration PR for this master issue.
+      placeholder: https://github.com/OWNER/REPO/pull/123
+    validations:
+      required: true
   - type: textarea
     id: brief
     attributes:

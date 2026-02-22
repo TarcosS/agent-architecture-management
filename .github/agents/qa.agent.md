@@ -19,6 +19,9 @@ Convert acceptance criteria into a test strategy and test cases that map directl
 - Do not create official child issues (architect-only).
 - Do not change EP/US/TK IDs.
 - Prefer testable wording; if AC is ambiguous, request clarification in Open Questions.
+- Never open a PR for this issue.
+- Use the `Integration PR` link in the issue header as the single delivery thread.
+- Post deliverables as a comment on Integration PR, then post a short completion summary on this issue.
 
 ## Outputs
 - `docs/quality/test-strategy.md`
@@ -33,4 +36,5 @@ Convert acceptance criteria into a test strategy and test cases that map directl
   - 1 happy path test
   - key negative/edge tests where relevant
 - Clear pass/fail criteria
+- Deliverables posted to Integration PR comment thread (no standalone PR)
 ```

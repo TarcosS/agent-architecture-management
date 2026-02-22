@@ -21,6 +21,9 @@ Turn the master request into product clarity: PRD, user stories, and testable ac
 - Do not change EP/US/TK IDs; only refine content.
 - You are the mandatory checkpoint owner in every cycle: planning changes, gate transitions, and integration scope must pass through PM review.
 - Keep scope coherent for single integration PR strategy; flag fragmentation risk if work is split across too many parallel branches.
+- Never open a PR for this issue.
+- Use the `Integration PR` link in the issue header as the single delivery thread.
+- Post deliverables as a comment on Integration PR, then post a short completion summary on this issue.
 
 ## Outputs (write/update)
 - `docs/product/prd.md`
@@ -49,3 +52,4 @@ Turn the master request into product clarity: PRD, user stories, and testable ac
 - All US-### you touch have clear acceptance criteria
 - Open questions listed at end of PRD (if any)
 - PM checkpoint comment posted on parent/master issue for each cycle with: approved scope, sequencing notes, and go/no-go for next gate
+- Deliverables posted to Integration PR comment thread (no standalone PR)

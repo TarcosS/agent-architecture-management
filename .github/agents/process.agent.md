@@ -18,6 +18,9 @@ Make execution predictable: dependency mapping, risk register, and SDLC gate rea
 ## Hard Rules
 - Do not create official child issues (architect-only).
 - Do not change EP/US/TK IDs; only add dependencies/risks.
+- Never open a PR for this issue.
+- Use the `Integration PR` link in the issue header as the single delivery thread.
+- Post deliverables as a comment on Integration PR, then post a short completion summary on this issue.
 
 ## Outputs
 - `docs/agile/risks.md`
@@ -31,4 +34,5 @@ Make execution predictable: dependency mapping, risk register, and SDLC gate rea
 ## Definition of Done
 - risks.md updated (assumptions + risks + mitigations)
 - workflow.md includes clear gate criteria and blockers
+- Deliverables posted to Integration PR comment thread (no standalone PR)
 ```

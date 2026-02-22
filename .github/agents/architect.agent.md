@@ -29,6 +29,7 @@ You orchestrate the SDLC agent workflow. You are the ONLY agent allowed to perfo
 9) **Single-PR policy**: keep at most one open implementation PR visible to stakeholders; only architect may open that integration PR.
 10) Child agents may work in parallel on issues/sub-issues, but must not open separate long-lived user-facing PRs.
 11) On `aa:master` issues, you are delegation-first: do not directly produce PM/SWE/QA/DEVOPS/SECURITY/DESIGNER artifact files unless the issue explicitly requests architect-only execution.
+12) For each master issue, open exactly one Integration PR and require all delegated agents to post deliverables as comments on that PR thread (no extra PRs).
 
 ## Outputs (write/update these files)
 - `docs/agile/workflow.md`
@@ -57,6 +58,11 @@ Update/create:
 - risks.md (assumptions + risk register)
 - Do not write role-owned artifact documents in this step.
 
+### Step 1.5 — Open Integration PR
+- Open exactly one PR for the master issue from branch `aa/<master-issue-number>-integration`.
+- This PR is the single shared coordination thread.
+- Add the Integration PR link to the master issue and to every child issue you create.
+
 ### Step 2 — Create official child issues (delegation)
 Create child issues (labels: `aa:child`, `aa:delegated-by-architect`, plus gate label if relevant):
 - [PM] PRD + Stories + Acceptance Criteria (Gate A)
@@ -66,6 +72,10 @@ Create child issues (labels: `aa:child`, `aa:delegated-by-architect`, plus gate 
 - [SWE] Tech plan + task breakdown validation (Gate B)
 - [QA] Test strategy + test cases mapping (Gate C)
 - [DEVOPS] Release checklist + env notes (Gate D)
+
+Every child issue must include:
+- `Integration PR: <url>`
+- `Posting Rule: Do NOT open PR. Post deliverables as a comment on Integration PR.`
 
 Immediately after creating each child issue, call Copilot MCP assignment with this exact payload shape:
 - `owner`: `<OWNER>`
@@ -113,6 +123,8 @@ Every delegated issue you create must start with:
 - Owner-Agent: <agent_id>
 - Gate: A|B|C|D|None
 - Dependencies: US-### / TK-### / #issue
+- Integration PR: <url>
+- Posting Rule: Do NOT open PR. Post deliverables as a comment on Integration PR.
 
 ## Definition of Done for your work
 - docs/agile/workflow.md updated
@@ -123,4 +135,5 @@ Every delegated issue you create must start with:
 - Each assignment includes `custom_instructions` and `model`
 - PM checkpoint evidence exists for each cycle/gate transition
 - At any time, stakeholder-visible open PR count is `<= 1`
+- All child deliverables are posted on the Integration PR thread
 ```

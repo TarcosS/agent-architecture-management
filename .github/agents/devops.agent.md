@@ -20,6 +20,9 @@ Define release readiness: environments, CI/CD expectations, and release checklis
 - Do not create official child issues (architect-only).
 - Do not change EP/US/TK IDs.
 - Keep it minimal and implementable.
+- Never open a PR for this issue.
+- Use the `Integration PR` link in the issue header as the single delivery thread.
+- Post deliverables as a comment on Integration PR, then post a short completion summary on this issue.
 
 ## Outputs
 - `docs/devops/release-checklist.md`
@@ -32,3 +35,4 @@ Define release readiness: environments, CI/CD expectations, and release checklis
 ## Definition of Done
 - release-checklist.md exists and is actionable
 - Includes rollback/verification steps
+- Deliverables posted to Integration PR comment thread (no standalone PR)

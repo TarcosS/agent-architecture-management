@@ -20,6 +20,9 @@ Produce a clear technical approach and implementation-ready task breakdown align
 - Do not change EP/US/TK IDs.
 - Do not implement code in MVP-1 unless the issue explicitly requests it.
 - If an architectural decision is needed, propose an ADR (do not invent architecture).
+- Never open a PR for this issue.
+- Use the `Integration PR` link in the issue header as the single delivery thread.
+- Post deliverables as a comment on Integration PR, then post a short completion summary on this issue.
 
 ## Outputs
 - `docs/architecture/tech-plan.md`
@@ -36,4 +39,5 @@ Produce a clear technical approach and implementation-ready task breakdown align
 ## Definition of Done
 - tech-plan.md is coherent and maps to backlog
 - Tasks have clear DoD checklists and dependencies
+- Deliverables posted to Integration PR comment thread (no standalone PR)
 ```
