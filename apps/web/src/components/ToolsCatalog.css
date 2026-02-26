@@ -1,0 +1,231 @@
+/* ── Layout ──────────────────────────────────────────────────────────────── */
+.catalog {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  font-family: system-ui, sans-serif;
+  text-align: left;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.catalog__header {
+  margin-bottom: 1.5rem;
+}
+
+.catalog__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: #e2e8f0;
+}
+
+.catalog__subtitle {
+  color: #94a3b8;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.catalog__subtitle--highlight {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+/* ── Controls ────────────────────────────────────────────────────────────── */
+.catalog__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.catalog__filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #cbd5e1;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.filter-btn:hover {
+  background: #293548;
+  border-color: #475569;
+}
+
+.filter-btn--active {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: #fff;
+}
+
+.filter-btn--issue.filter-btn--active {
+  background: #b45309;
+  border-color: #b45309;
+}
+
+.catalog__search {
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  min-width: 220px;
+  outline: none;
+}
+
+.catalog__search:focus {
+  border-color: #3b82f6;
+}
+
+/* ── Section ─────────────────────────────────────────────────────────────── */
+.catalog__section {
+  margin-bottom: 2.5rem;
+}
+
+.catalog__section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  margin: 0 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.catalog__section-count {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 9999px;
+  padding: 0 0.5rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────────── */
+.catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+/* ── Tool Card ───────────────────────────────────────────────────────────── */
+.tool-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: border-color 0.15s;
+}
+
+.tool-card:hover {
+  border-color: #475569;
+}
+
+.tool-card--issue {
+  border-color: #92400e;
+  background: #1c1408;
+}
+
+.tool-card--issue:hover {
+  border-color: #b45309;
+}
+
+.tool-card__header {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tool-card__name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  flex: 1 1 auto;
+}
+
+/* ── Badges ──────────────────────────────────────────────────────────────── */
+.tool-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.tool-badge--creates {
+  background: #14532d;
+  color: #4ade80;
+  border: 1px solid #166534;
+}
+
+.tool-badge--updates {
+  background: #1e3a5f;
+  color: #60a5fa;
+  border: 1px solid #1d4ed8;
+}
+
+/* ── Description ─────────────────────────────────────────────────────────── */
+.tool-card__description {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ── Operation tags ──────────────────────────────────────────────────────── */
+.tool-card__ops {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.op-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+.op-create  { background: #064e3b; color: #34d399; }
+.op-update  { background: #1e3a5f; color: #93c5fd; }
+.op-delete  { background: #450a0a; color: #f87171; }
+.op-read    { background: #1e1b4b; color: #a5b4fc; }
+.op-merge   { background: #2d1b69; color: #c4b5fd; }
+.op-comment { background: #1c1f2e; color: #94a3b8; }
+.op-assign  { background: #3b2f00; color: #fbbf24; }
+.op-unknown { background: #1a1a1a; color: #e2e8f0; border: 1px dashed #475569; }
+
+/* ── ID ──────────────────────────────────────────────────────────────────── */
+.tool-card__id {
+  font-size: 0.7rem;
+  color: #475569;
+  font-family: monospace;
+  margin-top: auto;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.catalog__empty {
+  color: #64748b;
+  text-align: center;
+  padding: 3rem 0;
+}
